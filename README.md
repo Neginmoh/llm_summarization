@@ -45,7 +45,7 @@ huggingface-cli login --add-to-git-credential --token HF_TOKEN
 Run the code below from the command line after replacing INPUT_DATA_PATH with the path to the downloaded input dataset:
 
 ```python
-python python.py INPUT_DATA_PATH
+python main.py INPUT_DATA_PATH
 ```
 
 3. **Setting Variables:**
