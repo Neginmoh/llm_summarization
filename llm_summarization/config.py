@@ -11,7 +11,7 @@ class Config:
     TEMPERATURE = 0.001  # controls the randomness of the generated outputs
     TOP_K = 10  # k most probable tokens are selected at each step
     TASK = "text-generation"  # task performed by LLM model
-    DEVICE_MAP = "auto"  # select appropriate availabel devices
+    DEVICE_MAP = "auto"  # select appropriate available devices
     DEFAULT_MODEL = "meta-llama/Llama-2-7b-chat-hf"  # pretrained LLM Model
     TRUNCATION = True  # if True truncate the input to a maximum length specified by the max_length argument or the model_max_length if no max_length is provided 
     RETURN_FULL_TEXT=False  # if False only the new output is returned
@@ -23,7 +23,7 @@ class Config:
 
     PROMPT_TEMPLATE =  """
               Write a very short summary of the text delimited by triple backticks, with the title delimited by triple dashes.
-              Make sure that the length of the generated summary is only one sentence and it includes the keypoints of the text and title.
+              Make sure that the length of the generated summary is only one sentence and it includes the key points of the text and title.
               title:
               ---{title}---
               
@@ -34,7 +34,7 @@ class Config:
            """  # prompt template including the instruction for the LLM model based on title and abstract of dataset
 
     BASE_DIR = os.getcwd()  # base directory
-    DATA_DIR = os.path.join(BASE_DIR, 'data')  # data direcory
+    DATA_DIR = os.path.join(BASE_DIR, 'data')  # data directory
     OUTPUT_DIR = os.path.join(DATA_DIR, 'output')  # output directory within data directory
     os.makedirs(OUTPUT_DIR, exist_ok=True)  # create a output directory if does not exist within data directory
     CLEAN_DATASET_PATH = os.path.join(OUTPUT_DIR,"clean_dataset.csv")  # path to the cleaned and processed dataset within output directory

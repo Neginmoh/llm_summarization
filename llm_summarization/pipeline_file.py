@@ -33,7 +33,7 @@ class Pipeliner:
     
     def get_summary(self, docu_info):
         '''
-        Genarates a summary based on provided document information
+        Generates a summary based on provided document information
 
         Args:
             docu_info (list): a list containing:

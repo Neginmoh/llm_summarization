@@ -9,7 +9,7 @@ def text_processor(input_df):
     Performs text processing and data cleaning on the input DataFrame
 
     Args:
-        input_df (pd.DataFrame): A DataFrame including the abstract and title columns where each row corrosponds to a different article
+        input_df (pd.DataFrame): A DataFrame including the abstract and title columns where each row corresponds to a different article
 
     Returns:
         pd.DataFrame: A pre-processed DataFrame

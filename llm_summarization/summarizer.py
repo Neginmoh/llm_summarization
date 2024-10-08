@@ -22,13 +22,13 @@ class SummarizerLLM:
         self.pipe_line is an instance of the Pipeliner class to streamline the summarization process, using the LLM model provided in self.model_name.
         self.data_loading is an instance of the DataLoader class for loading a file from input_path.
         self.data_loading.json_loader() is a generator object that yields data batches from a JSON file located at input_path.
-        self.max_chunk_count set to Config.MAX_CHUNK_COUNT, specifies how many batches we want to process and obatain their summaries
+        self.max_chunk_count set to Config.MAX_CHUNK_COUNT, specifies how many batches we want to process and obtain their summaries
         self.data_chunksize is set to Config.DATA_CHUNKSIZE specifies the size of each batch of data.
         self.clean_dataset_path is set to Config.CLEAN_DATASET_PATH, specifying the path to CSV file containing the cleaned DataFrame
         self.output_dataset_path = Config.OUTPUT_DATASET_PATH, specifying the path to CSV file containing the DataFrame of cleaned documents and their generated summaries.
         self.col1 is set to Config.COL1, which is the title column which will be used to summarize abstracts.
-        self.col2 is set to Config.COL2, which is the abstarct column that will be summaried.
-        self.col3 is set to Config.COL3, which is the summary column containg the generated summaries.
+        self.col2 is set to Config.COL2, which is the abstract column that will be summarized.
+        self.col3 is set to Config.COL3, which is the summary column containing the generated summaries.
         '''
         self.model_name = Config.DEFAULT_MODEL
         self.pipe_line = Pipeliner(self.model_name)
@@ -44,14 +44,14 @@ class SummarizerLLM:
         
     def get_summary_list(self, pre_processed_batch, verbose=False):
         '''
-        Genarates summaries of the pre-processed batch of articles containing abstract and title for each row of the given DateFrame.
+        Generates summaries of the pre-processed batch of articles containing abstract and title for each row of the given DateFrame.
         The method loops through every document in the pre-processed batch, obtains its summary and handles Exception errors.
 
         Args:
-            pre_processed_batch (pd.DataFrame): A DateFrame of pre-processed batch that includes the abstract and title columns where each row corrosponds to a different article
+            pre_processed_batch (pd.DataFrame): A DateFrame of pre-processed batch that includes the abstract and title columns where each row corresponds to a different article
             verbose (bool, optional): Disables/enables printing additional information, default is set to False (disable)
         Returns:
-            list: A list of generated summaries corrosponding to articles of pre_processed_batch
+            list: A list of generated summaries corresponding to articles of pre_processed_batch
         Raises:
             Exception: Logs any other exceptions that occur during process, and 
                 assigns 'No summary' as the summary for that document.
@@ -83,7 +83,7 @@ class SummarizerLLM:
     def pre_process(self, batch, count):
         '''
         This method pre-processes the batch of data and saves the cleaned data to a specified file.
-        Only self.col1 and self.col2 columns corrosponding to the 'title' and 'abstarct' will be kept.
+        Only self.col1 and self.col2 columns corresponding to the 'title' and 'abstract' will be kept.
         If this is the first batch, the file will be opened in write mode and the column names will be written to the CSV file located at self.clean_dataset_path
         For subsequent batches, the cleaned data is appended to the existing file.
 
@@ -111,12 +111,12 @@ class SummarizerLLM:
     def post_process(self, summary_list, pre_processed_batch, count):
         '''
         This method adds a new column containing a list of summaries to the existing DataFrame and saves the DataFrame to a CSV file at specified path.
-        The new column is self.col3 which corrosponds to 'summary' and will be added to DataFrame with existing 'title' and 'abstract' columns.
+        The new column is self.col3 which corresponds to 'summary' and will be added to DataFrame with existing 'title' and 'abstract' columns.
         If this is the first batch, the file will be opened in write mode and the column names will be written to the CSV file at self.output_dataset_path
         For subsequent batches, the cleaned data is appended to the existing file.
 
         Args:
-            summary_list (list): A list of generated summaries corrosponding to articles of pre_processed_batch
+            summary_list (list): A list of generated summaries corresponding to articles of pre_processed_batch
             pre_processed_batch (pd.DataFrame): A DataFrame containing the batch of data that has been pre-processed 
             count (int): the iteration count indicating which batch is being post-processed
         Returns:
@@ -138,7 +138,7 @@ class SummarizerLLM:
         """
         This method runs the inference on data batches.
         It iterates over batches of data generated by self.data_generator.
-        Performes pre-processesing by self.pre_process method on batches, which also saves cleaned dataframe to a file.
+        Performs pre-processing by self.pre_process method on batches, which also saves cleaned DataFrame to a file.
         Next, it generates their summaries by self.get_summary_list method
         Then performs post-processing by self.post_process method which adds the new column containing their summaries to the DataFrame and saves the DataFrame to another file.
         The process stops when the number of processed batches reaches the `self.max_chunk_count value.
