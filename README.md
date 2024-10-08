@@ -71,7 +71,7 @@ Note that, only the **title** and **abstract** will be used, for the text summar
 
 ### Output format
 
-Here is an example of a single cleaned output dataset (without summaries):
+Here are two examples of the cleaned output dataset (without summaries):
 |   | **title**                | **abstract**                        |
 |---|--------------------------|-------------------------------------|
 | 0 | Calculation of prompt... | A fully differential calculation... |
@@ -79,7 +79,7 @@ Here is an example of a single cleaned output dataset (without summaries):
 
 <br>
 
-Here is an example of a single output dataset containing the summaries:
+Here are two examples of the output dataset containing the summaries:
 |   | **title**                | **abstract**                        | **summary** 	|
 |---|--------------------------|-------------------------------------|-------------	|
 | 0 | Calculation of prompt... | A fully differential calculation... | In this study, the authors... |
